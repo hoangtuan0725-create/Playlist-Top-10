@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Top 10 2026 — Playlist</title>
+<style>
+  :root{
+    --bg:#120B22; --bg2:#1B0F33; --line:#33215C;
+    --ink:#F3EEFF; --mute:#9C8CC4;
+    --violet:#A16BFF; --orange:#FF7A18;
+    --display:"Haettenschweiler","Arial Narrow Bold","Impact","Oswald",system-ui,sans-serif;
+    --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:radial-gradient(120% 60% at 50% -10%, #3A1A6B 0%, transparent 60%), var(--bg);
+    color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;min-height:100vh;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:28px 16px 80px}
+
+  .eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--orange);font-weight:700;margin:0 0 6px}
+  h1{
+    font-family:var(--display);font-size:clamp(46px,15vw,86px);line-height:.85;
+    letter-spacing:.01em;text-transform:uppercase;margin:0;
+    background:linear-gradient(100deg,var(--orange),#FFC46B 30%,var(--violet) 85%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .meta{color:var(--mute);font-size:13px;margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .dot{width:4px;height:4px;border-radius:50%;background:var(--line)}
+
+  .bar{display:flex;gap:8px;margin:22px 0 4px}
+  input[type=search],input[type=text],input[type=url]{
+    flex:1;min-width:0;background:var(--bg2);border:1px solid var(--line);color:var(--ink);
+    border-radius:10px;padding:11px 13px;font-size:15px;font-family:var(--body);
+  }
+  input::placeholder{color:#6E5C99}
+  input:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+  button{
+    font-family:var(--body);font-size:14px;font-weight:600;cursor:pointer;
+    background:var(--bg2);color:var(--ink);border:1px solid var(--line);
+    border-radius:10px;padding:11px 14px;white-space:nowrap;
+  }
+  button:hover{border-color:var(--violet)}
+  button.hot{background:linear-gradient(100deg,var(--orange),#FF4D8D);border:0;color:#1A0A00}
+
+  ol{list-style:none;margin:18px 0 0;padding:0}
+  li{border-top:1px solid var(--line)}
+  li:last-child{border-bottom:1px solid var(--line)}
+  .row{display:flex;align-items:center;gap:12px;padding:10px 4px}
+  .rank{font-family:var(--display);font-size:26px;line-height:1;width:30px;flex:none;text-align:right;
+        color:transparent;-webkit-text-stroke:1.1px var(--violet)}
+  .cover{width:52px;height:52px;flex:none;border-radius:8px;overflow:hidden;background:var(--bg2);
+         border:1px solid var(--line);display:block}
+  .cover img{width:100%;height:100%;object-fit:cover;display:block}
+  .txt{flex:1;min-width:0;text-decoration:none;color:inherit}
+  .t{font-size:15.5px;font-weight:600;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .a{font-size:12.5px;color:var(--mute);margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .yt{flex:none;width:34px;height:24px;border-radius:6px;background:#2A1A4D;display:grid;place-items:center}
+  .row:hover .yt{background:var(--orange)}
+  .yt svg{width:13px;height:13px;fill:#fff}
+  .row:hover .yt svg{fill:#1A0A00}
+  .row:hover .rank{-webkit-text-stroke-color:var(--orange)}
+
+  .tools{display:none;gap:6px;flex:none}
+  body.editing .tools{display:flex}
+  body.editing .yt{display:none}
+  .tools button{padding:7px 9px;font-size:13px;line-height:1;border-radius:8px}
+  .link-row{display:none;gap:6px;padding:0 4px 12px 46px}
+  body.editing .link-row{display:flex}
+  .link-row input{font-size:13px;padding:8px 10px}
+  .link-row button{padding:8px 10px;font-size:13px}
+  .flag{font-size:11px;color:#7CE0A0;flex:none;align-self:center}
+  .flag.warn{color:var(--orange)}
+
+  .panel{display:none;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:16px}
+  body.editing .panel{display:block}
+  .panel h3{margin:0 0 10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+  .panel .bar{margin:0 0 8px}
+  .hint{color:var(--mute);font-size:12.5px;line-height:1.5;margin:10px 0 0}
+  footer{margin-top:26px;color:var(--mute);font-size:12px;text-align:center;line-height:1.6}
+</style>
+</head>
+<body>
+
+<script id="songs-data" type="application/json">
+{
+  "title": "Top 10 2026",
+  "updated": "2026-08-28",
+  "songs": [
+    {"t":"Far From Home (Extended Mix)","a":"Unsenses","y":"_XnRKdq0gbY"},
+    {"t":"4 THE SCENE (Extended Mix)","a":"4444 OF A KIND","y":"MQuRz6GfuHc"},
+    {"t":"Waiting 4 (Extended Mix)","a":"4444 OF A KIND","y":"6yHzbNrEXK4"},
+    {"t":"Never Coming Down (Extended Mix)","a":"Rebelion & The Saints & Sarah Anglionin","y":"3KUIzwT1aws"},
+    {"t":"Tomorrow Can Wait (Pro Mix)","a":"D-Block & S-te-Fan & Dual Damage","y":"vPBqW8M-9T0"},
+    {"t":"Save The Day (Extended Mix)","a":"D-Block & S-te-Fan & Rebelion","y":"y-tpOydx6SI"},
+    {"t":"The Journey (Full Mix)","a":"Thyron","y":"-n3jZcsis6E"},
+    {"t":"Hold On (Extended Mix)","a":"Thyron","y":"6KSCG_9Z-0E"},
+    {"t":"My Misery (Extended Mix)","a":"Phuture Noize & DEEZL","y":"nK5IHd_JYw8"},
+    {"t":"Signals (Extended Mix)","a":"Demi Kanon","y":"kwlEZ5Reikc"},
+    {"t":"Step Into The Madness (Into The Madness 2026 Anthem)","a":"Da Tweekaz","y":"RRyEXR8_K6M"},
+    {"t":"OUR LIFE (Extended Mix)","a":"Sickmode & Krowdexx & Zyon & Teal","y":"ACPeyLMRJ3s"},
+    {"t":"Right Here (Extended Mix)","a":"D-Sturb & DEEZL","y":"dD-1-J06m6U"},
+    {"t":"Nothing Ever Feels The Same (Extended Mix)","a":"B-Front & Atmozfears","y":"sW-XhWKnJRw"},
+    {"t":"Arcadia (Extended Mix)","a":"D-Block & S-te-Fan & Phuture Noize","y":"jPlyLHYejIM"}
+  ]
+}
+</script>
+
+<div class="wrap">
+  <p class="eyebrow">Hard Dance Playlist</p>
+  <h1 id="pl-title">—</h1>
+  <div class="meta">
+    <span id="pl-count"></span><span class="dot"></span>
+    <span id="pl-updated"></span>
+  </div>
+
+  <div class="bar">
+    <input type="search" id="q" placeholder="Tìm bài hát hoặc nghệ sĩ…" autocomplete="off">
+    <button id="btn-all" title="Mở tất cả trên YouTube">▶ Nghe hết</button>
+    <button id="btn-edit">Sửa</button>
+  </div>
+
+  <ol id="list"></ol>
+
+  <div class="panel">
+    <h3>Thêm bài mới</h3>
+    <div class="bar"><input type="text" id="new-t" placeholder="Tên bài hát"></div>
+    <div class="bar"><input type="text" id="new-a" placeholder="Nghệ sĩ"></div>
+    <div class="bar">
+      <input type="url" id="new-y" placeholder="Link YouTube (có thể để trống)">
+      <button id="btn-add">Thêm</button>
+    </div>
+    <p class="hint">Ảnh bìa tự tìm sau khi thêm. Bài chưa có link YouTube sẽ hiện dấu ⚠ — bấm <b>Tìm</b> ở dòng đó rồi dán link vào.</p>
+
+    <h3 style="margin-top:18px">Tên playlist</h3>
+    <div class="bar">
+      <input type="text" id="edit-title" placeholder="Tên playlist">
+      <button id="btn-title">Lưu tên</button>
+    </div>
+
+    <div class="bar" style="margin-top:14px">
+      <button id="btn-art">Làm mới ảnh bìa</button>
+      <button class="hot" id="btn-save" style="flex:1">⬇︎ Tải file HTML mới</button>
+    </div>
+    <p class="hint">Sửa xong nhớ bấm <b>Tải file HTML mới</b> rồi tải file đó lên GitHub. Đóng trang mà chưa tải thì thay đổi sẽ mất.</p>
+  </div>
+
+  <footer>Ảnh bìa lấy từ Apple Music. Link YouTube mở thẳng video chính chủ.</footer>
+</div>
+
+<script>
+(function(){
+  var PRISTINE = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+
+  var DATA = JSON.parse(document.getElementById("songs-data").textContent);
+  var list = document.getElementById("list");
+  var q = document.getElementById("q");
+
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+
+  function clean(t){
+    return String(t)
+      .replace(/\((extended|pro|full|radio|original|melodic|club|edit)[^)]*\)/ig,"")
+      .replace(/\s*-\s*(extended|pro|radio|full)\s+mix\s*$/i,"")
+      .replace(/\s{2,}/g," ").trim();
+  }
+  function ytid(u){
+    u = String(u||"").trim();
+    var m = u.match(/(?:v=|youtu\.be\/|shorts\/|embed\/|live\/)([A-Za-z0-9_-]{11})/);
+    if(m) return m[1];
+    return /^[A-Za-z0-9_-]{11}$/.test(u) ? u : null;
+  }
+  function ytUrl(s){
+    if(s.y) return "https://www.youtube.com/watch?v=" + s.y;
+    return "https://www.youtube.com/results?search_query=" + encodeURIComponent(clean(s.t)+" "+s.a);
+  }
+  function fmtDate(d){var p=String(d).split("-");return p.length===3?("Cập nhật "+p[2]+"/"+p[1]+"/"+p[0]):d;}
+
+  function render(){
+    document.getElementById("pl-title").textContent = DATA.title;
+    document.getElementById("edit-title").value = DATA.title;
+    document.getElementById("pl-count").textContent = DATA.songs.length + " bài";
+    document.getElementById("pl-updated").textContent = fmtDate(DATA.updated);
+    document.title = DATA.title + " — Playlist";
+
+    var f = q.value.trim().toLowerCase(), html = "";
+    DATA.songs.forEach(function(s,i){
+      if(f && (s.t+" "+s.a).toLowerCase().indexOf(f) === -1) return;
+      var url = esc(ytUrl(s));
+      var cover = s.img ? '<img src="'+esc(s.img)+'" alt="" loading="lazy">' : "";
+      html +=
+      '<li>'+
+        '<div class="row">'+
+          '<span class="rank">'+(i+1)+'</span>'+
+          '<a class="cover" href="'+url+'" target="_blank" rel="noopener">'+cover+'</a>'+
+          '<a class="txt" href="'+url+'" target="_blank" rel="noopener">'+
+            '<span class="t">'+esc(s.t)+'</span><span class="a">'+esc(s.a)+'</span>'+
+          '</a>'+
+          '<span class="flag'+(s.y?"":" warn")+'">'+(s.y?"●":"⚠")+'</span>'+
+          '<a class="yt" href="'+url+'" target="_blank" rel="noopener">'+
+            '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></a>'+
+          '<span class="tools">'+
+            '<button data-up="'+i+'">▲</button>'+
+            '<button data-down="'+i+'">▼</button>'+
+            '<button data-del="'+i+'">✕</button>'+
+          '</span>'+
+        '</div>'+
+        '<div class="link-row">'+
+          '<input type="url" data-link="'+i+'" placeholder="Dán link YouTube" value="'+(s.y?esc("https://youtu.be/"+s.y):"")+'">'+
+          '<button data-savelink="'+i+'">Lưu</button>'+
+          '<button data-find="'+i+'">Tìm</button>'+
+        '</div>'+
+      '</li>';
+    });
+    list.innerHTML = html || '<li><div class="row" style="color:var(--mute);padding:16px 4px">Không tìm thấy bài nào.</div></li>';
+  }
+
+  function touch(){
+    DATA.updated = new Date().toISOString().slice(0,10);
+    render();
+  }
+
+  // ---- ảnh bìa: tìm tự động trên Apple Music, không được thì lấy ảnh video YouTube ----
+  function itunes(s){
+    var term = clean(s.t) + " " + String(s.a).split(/\s*&\s*/)[0];
+    return fetch("https://itunes.apple.com/search?entity=song&limit=1&term=" + encodeURIComponent(term))
+      .then(function(r){return r.json();})
+      .then(function(j){
+        if(j && j.results && j.results[0] && j.results[0].artworkUrl100){
+          return j.results[0].artworkUrl100.replace("100x100","400x400");
+        }
+        return null;
+      })
+      .catch(function(){return null;});
+  }
+
+  function fetchArt(force){
+    var queue = DATA.songs.filter(function(s){return force || !s.img;});
+    var i = 0;
+    (function next(){
+      if(i >= queue.length){ render(); return; }
+      var s = queue[i++];
+      itunes(s).then(function(url){
+        s.img = url || (s.y ? "https://i.ytimg.com/vi/"+s.y+"/mqdefault.jpg" : null);
+        render();
+        setTimeout(next, 220);
+      });
+    })();
+  }
+
+  // ---- nút trong danh sách ----
+  list.addEventListener("click", function(e){
+    var b = e.target.closest("button");
+    if(!b) return;
+    var i;
+    if((i = b.dataset.del) !== undefined){
+      if(confirm("Xoá bài này?")){ DATA.songs.splice(+i,1); touch(); }
+    } else if((i = b.dataset.up) !== undefined){
+      i = +i; if(i>0){ DATA.songs.splice(i-1,0,DATA.songs.splice(i,1)[0]); touch(); }
+    } else if((i = b.dataset.down) !== undefined){
+      i = +i; if(i<DATA.songs.length-1){ DATA.songs.splice(i+1,0,DATA.songs.splice(i,1)[0]); touch(); }
+    } else if((i = b.dataset.savelink) !== undefined){
+      var inp = list.querySelector('[data-link="'+i+'"]');
+      var id = ytid(inp.value);
+      if(!id) return alert("Link YouTube không hợp lệ.");
+      DATA.songs[+i].y = id;
+      if(!DATA.songs[+i].img) DATA.songs[+i].img = "https://i.ytimg.com/vi/"+id+"/mqdefault.jpg";
+      touch();
+    } else if((i = b.dataset.find) !== undefined){
+      var s = DATA.songs[+i];
+      window.open("https://www.youtube.com/results?search_query=" +
+        encodeURIComponent(clean(s.t)+" "+s.a), "_blank");
+    }
+  });
+
+  q.addEventListener("input", render);
+
+  document.getElementById("btn-edit").addEventListener("click", function(){
+    var on = document.body.classList.toggle("editing");
+    this.textContent = on ? "Xong" : "Sửa";
+    if(on){ q.value=""; render(); }
+  });
+
+  document.getElementById("btn-all").addEventListener("click", function(){
+    var ids = DATA.songs.filter(function(s){return s.y;}).slice(0,50).map(function(s){return s.y;});
+    if(!ids.length) return alert("Chưa bài nào có link YouTube.");
+    window.open("https://www.youtube.com/watch_videos?video_ids=" + ids.join(","), "_blank");
+  });
+
+  document.getElementById("btn-add").addEventListener("click", function(){
+    var t = document.getElementById("new-t").value.trim();
+    var a = document.getElementById("new-a").value.trim();
+    var y = ytid(document.getElementById("new-y").value);
+    if(!t) return alert("Nhập tên bài hát.");
+    var s = {t:t, a:a}; if(y) s.y = y;
+    DATA.songs.push(s);
+    document.getElementById("new-t").value="";
+    document.getElementById("new-a").value="";
+    document.getElementById("new-y").value="";
+    touch();
+    itunes(s).then(function(url){
+      s.img = url || (s.y ? "https://i.ytimg.com/vi/"+s.y+"/mqdefault.jpg" : null);
+      render();
+    });
+  });
+
+  document.getElementById("btn-title").addEventListener("click", function(){
+    var v = document.getElementById("edit-title").value.trim();
+    if(v){ DATA.title = v; touch(); }
+  });
+
+  document.getElementById("btn-art").addEventListener("click", function(){ fetchArt(true); });
+
+  document.getElementById("btn-save").addEventListener("click", function(){
+    var json = JSON.stringify(DATA,null,2).replace(/</g,"\\u003c");
+    var out = PRISTINE.replace(
+      /(\u003cscript id="songs-data"[^>]*>)[\s\S]*?(\u003c\/script>)/,
+      "$1\n" + json.replace(/\$/g,"$$$$") + "\n$2"
+    );
+    var blob = new Blob([out], {type:"text/html;charset=utf-8"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "index.html";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){URL.revokeObjectURL(a.href);}, 1000);
+  });
+
+  render();
+  fetchArt(false);
+})();
+</script>
+</body>
+</html>
